@@ -6,7 +6,7 @@ const Navbar = () => {
     const [visible, setvisible] = useState(false);
 
     return (
-        <div className="flex items-center justify-between py-5 font-medium font-opensans">
+        <div className="flex items-center justify-between py-5 font-medium sm:relative">
             <img src={assets.SMlogo} className="w-48" alt="" />
             <ul className="hidden sm:flex gap-5 text-sm">
 
@@ -31,16 +31,16 @@ const Navbar = () => {
                 <NavLink to='/about' className="flex flex-col items-center gap-1 group">
                     {({ isActive }) => (
                         <>
-                            <p className="transition duration-200 group-hover:-translate-y-0.5">ABOUT US</p>
+                            <p className="transition duration-200 group-hover:-translate-y-0.5">ABOUT</p>
                             <hr className={`w-2/4 h-[1.5px] bg-black border-none ${isActive ? "block" : "hidden group-hover:block"}`} />
                         </>
                     )}
                 </NavLink>
 
-                <NavLink to='/contact' className="flex flex-col items-center gap-1 group">
+                <NavLink to='/contactus' className="flex flex-col items-center gap-1 group">
                     {({ isActive }) => (
                         <>
-                            <p className="transition duration-200 group-hover:-translate-y-0.5">CONTACT US</p>
+                            <p className="transition duration-200 group-hover:-translate-y-0.5">CONTACT</p>
                             <hr className={`w-2/4 h-[1.5px] bg-black border-none ${isActive ? "block" : "hidden group-hover:block"}`} />
                         </>
                     )}
@@ -83,9 +83,9 @@ const Navbar = () => {
                         <p>Back</p>
                     </div>
                     <NavLink onClick={() => { setvisible(false) }} to='/' className="py-2 pl-6 border">HOME</NavLink>
-                    <NavLink onClick={() => { setvisible(false) }} to='/' className="py-2 pl-6 border">COLLECTION</NavLink>
-                    <NavLink onClick={() => { setvisible(false) }} to='/' className="py-2 pl-6 border">ABOUT US</NavLink>
-                    <NavLink onClick={() => { setvisible(false) }} to='/' className="py-2 pl-6 border">CONTACT US</NavLink>
+                    <NavLink onClick={() => { setvisible(false) }} to='/collection' className="py-2 pl-6 border">COLLECTION</NavLink>
+                    <NavLink onClick={() => { setvisible(false) }} to='/about' className="py-2 pl-6 border">ABOUT US</NavLink>
+                    <NavLink onClick={() => { setvisible(false) }} to='/contactus' className="py-2 pl-6 border">CONTACT US</NavLink>
                     <a
                         href="/catalogue.pdf"
                         target="_blank"
@@ -96,6 +96,7 @@ const Navbar = () => {
                     </a>
                 </div>
             </div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-[0.5px] bg-black hidden md:block"></div>
         </div>
     );
 };

@@ -1,22 +1,29 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-body {
-    body {
-        font-family: "Poppins", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        /* or any desired weight like 300, 500, etc. */
-        font-style: normal;
-        font-variation-settings:
-            "wdth" 100;
-    }
-
-
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
 }
 
 a.active hr {
     display: block;
+}
+
+
+.afacadflux {
+    font-family: "Afacad Flux", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0;
+}
+
+.opensans {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-variation-settings:
+        "wdth" 100;
 }
 
 .poppins-thin {
@@ -123,6 +130,114 @@ a.active hr {
 
 .poppins-black-italic {
     font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.barlow-condensed-thin {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.barlow-condensed-extralight {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.barlow-condensed-light {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.barlow-condensed-regular {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.barlow-condensed-medium {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.barlow-condensed-semibold {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.barlow-condensed-bold {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.barlow-condensed-extrabold {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.barlow-condensed-black {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.barlow-condensed-thin-italic {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.barlow-condensed-extralight-italic {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.barlow-condensed-light-italic {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.barlow-condensed-regular-italic {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.barlow-condensed-medium-italic {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.barlow-condensed-semibold-italic {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.barlow-condensed-bold-italic {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.barlow-condensed-extrabold-italic {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.barlow-condensed-black-italic {
+    font-family: "Barlow Condensed", sans-serif;
     font-weight: 900;
     font-style: italic;
 }
