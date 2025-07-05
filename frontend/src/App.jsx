@@ -5,10 +5,11 @@ import About from './pages/About'
 import Collection from './pages/Collection'
 import Contact from './pages/Contact'
 import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
 
 const App = () => {
   return (
-    <div className='px-4 sm:px-[2vw] md:px-[4vw] lg:px-[6vw]'>
+    <div className='px-4 sm:px-[1vw] md:px-[2vw] lg:px-[4vw]'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/collection' element={<Collection />} />
         <Route path='/contactus' element={<Contact />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

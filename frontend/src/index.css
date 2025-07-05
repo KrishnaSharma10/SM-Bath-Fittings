@@ -3,6 +3,9 @@
 
 .montserrat {
     font-family: 'Montserrat', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 433;
+    font-style: normal;
 }
 
 a.active hr {

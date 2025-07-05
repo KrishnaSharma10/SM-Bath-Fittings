@@ -5,6 +5,7 @@ import dropdownicon from './dropdown_icon.png'
 import faucet1 from './faucet1.jpg'
 import bathessentials from './bathessentials.jpg'
 import bathset from './bathroomset.jpg'
+import SMlogo2 from './SM_logo.jpg'
 
 export const assets = {
     SMlogo,
@@ -12,5 +13,6 @@ export const assets = {
     dropdownicon,
     faucet1,
     bathessentials,
-    bathset
+    bathset,
+    SMlogo2
 }
