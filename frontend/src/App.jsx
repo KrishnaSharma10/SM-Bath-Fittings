@@ -9,7 +9,7 @@ import Footer from './components/Footer.jsx'
 
 const App = () => {
   return (
-    <div className='px-4 sm:px-[1vw] md:px-[2vw] lg:px-[4vw]'>
+    <div className='h-screen bg-gradient-to-b from-white via-blue-100 to-white transition-colors duration-500 px-4 sm:px-[1vw] md:px-[2vw] lg:px-[4vw]'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
