@@ -10,7 +10,7 @@ const Contact = () => {
                 <div className="h-[2px] bg-black w-8 sm:w-12"></div>
             </div>
             <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-9 md:gap-12">
-                <div className="w-full h-80 md:h-100">
+                <div className="w-full h-80 md:h-100 border-[3px] border-gray-400 rounded-xl overflow-hidden shadow-md">
                     <iframe
                         title="Map"
                         src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d851.8069203908888!2d75.56732862634244!3d31.352695735946998!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDIxJzA5LjYiTiA3NcKwMzQnMDIuNSJF!5e0!3m2!1sen!2sin!4v1751654196945!5m2!1sen!2sin"
