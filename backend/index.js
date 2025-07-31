@@ -7,9 +7,8 @@ const port = 5000;
 app.use(express.json());
 connectDb();
 
-// const collectionRoutes = require('./routes/collectionRoutes');
-
-// app.use('/api/categories', collectionRoutes);
+const collectionRoutes = require('./routes/collectionRoutes');
+app.use('/api/categories', collectionRoutes);
 
 app.get("/health", (req, res) => {
     res.send("Hello");

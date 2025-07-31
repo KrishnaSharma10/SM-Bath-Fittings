@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const {
+  getAllCategories,
   getAllCollectionsbyCategory,
-  getCollectionById,
+  getProductsbyCollectionId,
   createCollection,
-  updateCollection,
-  deleteCollection
+  deleteCollection,
 } = require('../controllers/collectionController');
 
-router.get('/:categoryid', getAllCollectionsbyCategory);
-router.get('/collections/:collectionid', getCollectionById);
+router.get('/getcategories', getAllCategories);
+router.get('/collections/:collectionId', getProductsbyCollectionId);
+router.get('/:categoryId', getAllCollectionsbyCategory);
 router.post('/collections', createCollection);
-router.put('/collections/:collectionid', updateCollection);
-router.delete('/collections/:collectionid', deleteCollection);
+router.delete('/collections/:collectionId', deleteCollection);
 
 module.exports = router;
