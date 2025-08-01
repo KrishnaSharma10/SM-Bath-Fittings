@@ -73,7 +73,7 @@ const createCollection = async (req, res) => {
 const deleteCollection = async (req, res) => {
     const collectionId = req.params.collectionId;
     try {
-        await Product.deleteMany({ collection: collectionId });
+        await Product.deleteMany({ collectionRef: collectionId });
         await Collection.findByIdAndDelete(collectionId);
         res.status(200).json({ message: "Collection and its products deleted successfully." });
     } catch (error) {

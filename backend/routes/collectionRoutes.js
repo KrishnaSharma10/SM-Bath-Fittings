@@ -9,9 +9,9 @@ const {
 } = require('../controllers/collectionController');
 
 router.get('/getcategories', getAllCategories);
+router.post('/createcollection', createCollection);
 router.get('/collections/:collectionId', getProductsbyCollectionId);
 router.get('/:categoryId', getAllCollectionsbyCategory);
-router.post('/collections', createCollection);
-router.delete('/collections/:collectionId', deleteCollection);
+router.delete('/collections/delete/:collectionId', deleteCollection);
 
 module.exports = router;
