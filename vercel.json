@@ -1,4 +1,0 @@
-{
-    "buildCommand": "cd frontend && rm -rf node_modules package-lock.json && npm install --platform=linux --arch=x64 && npm run build",
-    "outputDirectory": "frontend/dist"
-}
