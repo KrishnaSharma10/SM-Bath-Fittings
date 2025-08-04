@@ -19,7 +19,7 @@ const Navbar = () => {
                     )}
                 </NavLink>
 
-                <NavLink to='/collection' className="flex flex-col items-center gap-1 group">
+                <NavLink to='/collection' end={false} className="flex flex-col items-center gap-1 group">
                     {({ isActive }) => (
                         <>
                             <p className="transition duration-200 group-hover:-translate-y-0.5">COLLECTION</p>
@@ -76,7 +76,8 @@ const Navbar = () => {
                 />
             </div>
 
-            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-blue-50 transition-all ${visible ? 'w-full' : 'w-0'}`}>
+            <div className={`fixed inset-0 z-50 bg-blue-50 transition-transform duration-300 ease-in-out ${visible ? "translate-x-0" : "translate-x-full"
+                }`}>
                 <div className="flex flex-col text-gray-600">
                     <div onClick={() => setvisible(false)} className="flex items-center gap-4 p-3">
                         <img className="h-4 rotate-180" src={assets.dropdownicon} alt="" />
