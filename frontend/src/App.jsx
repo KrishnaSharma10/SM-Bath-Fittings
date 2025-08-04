@@ -12,7 +12,7 @@ const App = () => {
     <div className='h-screen bg-gradient-to-b from-white via-blue-200 to-white transition-colors duration-500 px-4 sm:px-[1vw] md:px-[2vw] lg:px-[4vw]'>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Hom e />} />
         <Route path='/about' element={<About />} />
         <Route path='/collection' element={<Collection />} />
         <Route path='/contactus' element={<Contact />} />
