@@ -4,7 +4,7 @@ import CollectionCard from "../components/cards/CollectionCard";
 const AboutUs = () => {
     return (
         <div>
-            <CollectionCard />
+
         </div>
     )
 }
