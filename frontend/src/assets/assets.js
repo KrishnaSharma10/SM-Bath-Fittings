@@ -8,6 +8,7 @@ import bathset from './bathroomset.jpg'
 import SMlogo2 from './SM_logo.jpg'
 import slider1 from './slider1.jpg'
 import slider2 from './slider2.jpg'
+import nixon from './nixon.png'
 
 export const assets = {
     SMlogo,
@@ -18,5 +19,6 @@ export const assets = {
     bathset,
     SMlogo2,
     slider1,
-    slider2
+    slider2,
+    nixon
 }

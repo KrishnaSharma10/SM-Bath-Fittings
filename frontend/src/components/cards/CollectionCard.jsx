@@ -1,16 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { assets } from "../../assets/assets";
 
-const CollectionCard = () => {
+const CollectionCard = ({ image, title }) => {
     return (
-        <div className="border-solid border-2 group relative w-80 h-48 md:w-80 md:h-48 lg:w-84 rounded-2xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105">
+        <div className="w-58 h-32 md:w-100 md:h-48 rounded-2xl shadow-xl transition-transform duration-300 hover:scale-105 hover:border-3 border-2 border-black box-border overflow-hidden group">
             <Link to="/" className="block w-full h-full relative">
-                {/* You can place image, title, or content here */}
+                {/* Background Image */}
                 <img
-                    src="https://via.placeholder.com/300x200"
+                    src={assets.nixon}
                     alt="Collection"
-                    className="w-full h-2/3 object-cover"
+                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105 group-hover:brightness-75"
                 />
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Text Overlay */}
+                <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 className="text-lg font-semibold">Nixon Collection</h3>
+                    <p className="text-sm">Explore Now</p>
+                </div>
             </Link>
         </div>
     );
