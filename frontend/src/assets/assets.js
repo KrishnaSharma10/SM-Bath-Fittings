@@ -9,6 +9,7 @@ import SMlogo2 from './SM_logo.jpg'
 import slider1 from './slider1.jpg'
 import slider2 from './slider2.jpg'
 import nixon from './nixon.png'
+import vista from './vista.png'
 
 export const assets = {
     SMlogo,
@@ -20,5 +21,6 @@ export const assets = {
     SMlogo2,
     slider1,
     slider2,
-    nixon
+    nixon,
+    vista
 }

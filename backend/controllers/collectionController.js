@@ -14,6 +14,7 @@ const getAllCategories = async (req, res) => {
 
 const getAllCollectionsbyCategory = async (req, res) => {
     const categoryId = req.params.categoryId;
+    console.log(categoryId);
     try {
         const collections = await Collection.find({ category: categoryId }).populate("category");
         res.status(200).json(collections);

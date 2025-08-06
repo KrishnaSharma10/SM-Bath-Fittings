@@ -5,7 +5,7 @@ import CollectionGrid from "../components/grids/CollectionGrid";
 const AboutUs = () => {
     return (
         <div>
-            <CollectionGrid />
+
         </div>
     )
 }

@@ -5,7 +5,7 @@ export const getAllCategories = async () => {
     return res.data;
 };
 
-export const getAllCollectionsbyCategory = async () => {
-    const res = await api.get(import.meta.env.VITE_GETCOLLECTIONS_ENDPOINT);
+export const getAllCollectionsbyCategory = async (categoryId) => {
+    const res = await api.get(`${import.meta.env.VITE_GETCOLLECTIONS_ENDPOINT}${categoryId}`);
     return res.data;
 }

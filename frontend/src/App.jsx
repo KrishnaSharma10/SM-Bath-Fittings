@@ -6,6 +6,7 @@ import Collection from './pages/Collection'
 import Contact from './pages/Contact'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
+import CollectionGrid from './components/grids/CollectionGrid.jsx'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/collection' element={<Collection />} />
         <Route path='/contactus' element={<Contact />} />
+        <Route path='/collection/:title/:categoryId' element={<CollectionGrid />} />
       </Routes>
       <Footer />
     </div>
