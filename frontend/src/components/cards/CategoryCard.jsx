@@ -5,7 +5,7 @@ const TitleCard = ({ id, title, summary, image }) => {
     return (
         <div className="border-solid border-2 group relative w-58 h-80 md:w-70 md:h-104 lg:w-80 rounded-2xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105">
             {/* Entire card is a link */}
-            <Link to={`/collection/${title}/${id}`} className="block w-full h-full relative">
+            <Link to={`/collection/category/${title}/${id}`} className="block w-full h-full relative">
                 {/* Background Image with zoom on hover */}
                 <img
                     src={image}

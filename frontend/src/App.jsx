@@ -7,6 +7,8 @@ import Contact from './pages/Contact'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import CollectionGrid from './components/grids/CollectionGrid.jsx'
+import NotFound from './pages/NotFound.jsx'
+import CategoryGrid from './components/grids/CategoryGrid.jsx'
 
 const App = () => {
   return (
@@ -17,7 +19,9 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/collection' element={<Collection />} />
         <Route path='/contactus' element={<Contact />} />
-        <Route path='/collection/:title/:categoryId' element={<CollectionGrid />} />
+        <Route path='/collection/category/:title/:categoryId' element={<CollectionGrid />} />
+        <Route path='/collection/category/collections/:title/:collectionId' element={<CategoryGrid />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

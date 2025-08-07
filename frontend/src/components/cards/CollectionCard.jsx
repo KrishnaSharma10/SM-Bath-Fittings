@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { assets } from "../../assets/assets";
 
-const CollectionCard = ({ image, name }) => {
+const CollectionCard = ({ image, name, id, description }) => {
     return (
         <div className="w-58 h-32 md:w-100 md:h-48 rounded-2xl shadow-xl transition-transform duration-300 hover:scale-105 hover:border-3 border-2 border-black box-border overflow-hidden group">
-            <Link to="/" className="block w-full h-full relative">
+            <Link to={`/collection/category/collections/${name}/${id}`} className="block w-full h-full relative">
                 {/* Background Image */}
                 <img
                     src={image}
