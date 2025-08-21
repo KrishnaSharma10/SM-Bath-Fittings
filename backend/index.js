@@ -10,8 +10,10 @@ app.use(cors());
 app.use(express.json());
 connectDb();
 
-const collectionRoutes = require('./routes/collectionRoutes');
-app.use('/api/categories', collectionRoutes);
+const catalogRoutes = require('./routes/catalogRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+app.use('/api/catalog', catalogRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get("/health", (req, res) => {
     res.send("Hello");
