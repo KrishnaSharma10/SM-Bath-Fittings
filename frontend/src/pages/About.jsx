@@ -70,10 +70,10 @@ const AboutUs = () => {
 
                 <div className="relative">
                     <img
-    src="https://placehold.co/900x700/e7e4e1/453e39?text=Our+Workshop"
-    alt="Our Workshop"
-    className="w-full h-[320px] md:h-[400px] object-cover rounded-2xl shadow-xl"
-/>
+                        src="https://placehold.co/900x700/e7e4e1/453e39?text=Our+Workshop"
+                        alt="Our Workshop"
+                        className="w-full h-[320px] md:h-[400px] object-cover rounded-2xl shadow-xl"
+                    />
                     <div className="absolute -bottom-6 -left-6 bg-charcoal-900 text-cream px-6 py-4 rounded-xl shadow-lg hidden sm:block">
                         <p className="barlow-condensed-medium text-2xl text-brass-300">15+ Years</p>
                         <p className="opensans text-xs text-charcoal-300">of Craftsmanship</p>
@@ -128,20 +128,57 @@ const AboutUs = () => {
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="max-w-[1400px] mx-auto px-4 pb-20">
-                <div className="rounded-2xl bg-gradient-to-r from-charcoal-900 via-charcoal-800 to-charcoal-900 px-8 py-14 md:px-16 text-center shadow-2xl">
-                    <h2 className="barlow-condensed-medium text-3xl md:text-4xl text-cream mb-4">
+            {/* CTA - Full width watery section */}
+            <section className="relative w-full overflow-hidden py-16 md:py-20">
+                <style>{`
+                    @keyframes aboutCtaShimmer {
+                        0% { transform: translateX(-100%); }
+                        100% { transform: translateX(100%); }
+                    }
+                    @keyframes aboutCtaBlob1 {
+                        0%, 100% { transform: translate(0, 0) scale(1); }
+                        50% { transform: translate(25px, -20px) scale(1.15); }
+                    }
+                    @keyframes aboutCtaBlob2 {
+                        0%, 100% { transform: translate(0, 0) scale(1); }
+                        50% { transform: translate(-25px, 20px) scale(1.1); }
+                    }
+                    .about-cta-bg {
+                        background: linear-gradient(120deg, #ffffff 0%, #dceefb 50%, #ffffff 100%);
+                    }
+                    .about-cta-shimmer {
+                        animation: aboutCtaShimmer 8s ease-in-out infinite;
+                    }
+                    .about-cta-blob-1 {
+                        animation: aboutCtaBlob1 9s ease-in-out infinite;
+                    }
+                    .about-cta-blob-2 {
+                        animation: aboutCtaBlob2 10s ease-in-out infinite;
+                    }
+                `}</style>
+
+                <div className="about-cta-bg absolute inset-0" />
+                <div className="about-cta-blob-1 absolute -top-16 -left-10 w-72 h-72 bg-sky-300/30 rounded-full blur-3xl" />
+                <div className="about-cta-blob-2 absolute -bottom-16 -right-10 w-72 h-72 bg-sky-200/40 rounded-full blur-3xl" />
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="about-cta-shimmer absolute top-0 left-0 h-full w-1/4 bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+                </div>
+
+                <div className="relative max-w-3xl mx-auto px-4 text-center">
+                    <h2 className="barlow-condensed-medium text-3xl md:text-5xl text-charcoal-900 mb-4">
                         Explore Our Full Range of Bath Fittings
                     </h2>
-                    <p className="opensans text-charcoal-300 max-w-xl mx-auto mb-8 text-sm md:text-base">
+                    <p className="opensans text-charcoal-500 max-w-xl mx-auto mb-8 text-sm md:text-base">
                         From taps to accessories, discover fittings designed to last a lifetime.
                     </p>
                     <Link
                         to="/collection"
-                        className="inline-flex items-center gap-2 px-8 py-3 bg-brass-400 text-charcoal-900 text-sm font-semibold rounded-full hover:bg-brass-300 shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+                        className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-sky-400 to-sky-300 text-charcoal-900 text-sm font-semibold rounded-full hover:from-sky-300 hover:to-sky-200 shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                     >
                         View Collection
+                        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4">
+                            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
                     </Link>
                 </div>
             </section>
