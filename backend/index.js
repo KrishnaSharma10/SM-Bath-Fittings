@@ -11,9 +11,9 @@ app.use(express.json());
 connectDb();
 
 const catalogRoutes = require('./routes/catalogRoutes');
-const adminRoutes = require('./routes/adminRoutes');
+// const adminRoutes = require('./routes/adminRoutes');
 app.use('/api/catalog', catalogRoutes);
-app.use('/api/admin', adminRoutes);
+// app.use('/api/admin', adminRoutes);
 
 app.get("/health", (req, res) => {
     res.send("Hello");

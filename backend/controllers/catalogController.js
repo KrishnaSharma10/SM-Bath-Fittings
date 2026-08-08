@@ -1,6 +1,6 @@
-const Collection = require("../models/CollectionModel")
-const Category = require("../models/CategoryModel")
-const Product = require("../models/ProductModel")
+const Category = require("../models/Category");
+const Collection = require("../models/Collection");
+const Product = require("../models/Product");
 
 const getAllCategories = async (req, res) => {
     try {
@@ -15,7 +15,7 @@ const getAllCategories = async (req, res) => {
 const getAllCollectionsbyCategory = async (req, res) => {
     const categoryId = req.params.categoryId;
     try {
-        const collections = await Collection.find({ category: categoryId }).populate("category");
+        const collections = await Collection.find({ categoryRef: categoryId }).populate("categoryRef");
         res.status(200).json(collections);
     }
     catch (err) {
@@ -35,57 +35,62 @@ const getProductsbyCollectionId = async (req, res) => {
     }
 }
 
-const createCollection = async (req, res) => {
-    try {
-        const { categoryName, collectionName, titleImage, description, products } = req.body;
 
-        const category = await Category.findOne({ name: categoryName });
+// const createCollection = async (req, res) => {
+//     try {
+//         const { categoryName, collectionName, image, description, products } = req.body;
+//
+//         const category = await Category.findOne({ name: categoryName });
+//         if (!category) {
+//             return res.status(404).json({ message: `Category '${categoryName}' not found` });
+//         }
+//
+//         const NewCollection = await Collection.create({
+//             categoryRef: category._id,
+//             name: collectionName,
+//             image,
+//             description
+//         });
+//
+//         const createdProducts = await Promise.all(
+//             (products || []).map((prod) =>
+//                 Product.create({
+//                     collectionRef: NewCollection._id,
+//                     name: prod.name,
+//                     image: prod.image,
+//                     description: prod.description
+//                 })
+//             )
+//         );
+//
+//         res.status(201).json({
+//             message: "Collection and products created successfully",
+//             collection: NewCollection,
+//             products: createdProducts
+//         });
+//     }
+//     catch (error) {
+//         console.error("Error creating collection and products:", error);
+//         res.status(500).json({ error: error.message });
+//     }
+// }
 
-        const NewCollection = await Collection.create({
-            category: category._id,
-            name: collectionName,
-            titleImage,
-            description
-        });
-
-        const createdProducts = await Promise.all(
-            products.map((prod) =>
-                Product.create({
-                    collectionRef: NewCollection._id,
-                    name: prod.name,
-                    image: prod.image
-                })
-            )
-        );
-
-        res.status(201).json({
-            message: "Collection and products created successfully",
-            collection: NewCollection,
-            products: createdProducts
-        });
-    }
-    catch (error) {
-        console.error("Error creating collection and products:", error);
-        res.status(500).json({ error: error.message });
-    }
-}
-
-const deleteCollection = async (req, res) => {
-    const collectionId = req.params.collectionId;
-    try {
-        await Product.deleteMany({ collectionRef: collectionId });
-        await Collection.findByIdAndDelete(collectionId);
-        res.status(200).json({ message: "Collection and its products deleted successfully." });
-    } catch (error) {
-        console.error("Error deleting collection:", error);
-        res.status(500).json({ message: "Server error while deleting collection." });
-    }
-};
+// const deleteCollection = async (req, res) => {
+//     const collectionId = req.params.collectionId;
+//     try {
+//         await Product.deleteMany({ collectionRef: collectionId });
+//         await Collection.findByIdAndDelete(collectionId);
+//         res.status(200).json({ message: "Collection and its products deleted successfully." });
+//     } catch (error) {
+//         console.error("Error deleting collection:", error);
+//         res.status(500).json({ message: "Server error while deleting collection." });
+//     }
+// };
 
 module.exports = {
     getAllCategories,
     getAllCollectionsbyCategory,
     getProductsbyCollectionId,
-    createCollection,
-    deleteCollection,
+    // createCollection,
+    // deleteCollection,
 }
