@@ -1,51 +1,74 @@
 import React from "react";
 import { assets } from "../assets/assets";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
+const exploreLinks = [
+    { to: "/", label: "Home" },
+    { to: "/collection", label: "Collection" },
+    { to: "/about", label: "About" },
+    { to: "/contactus", label: "Contact" },
+];
+
+const linkClass = "transition-colors duration-200 hover:text-brand-red";
 
 const Footer = () => {
     return (
-        <footer className=" py-6 mt-12">
-            <div className="w-full flex flex-col gap-8">
-                <div className="w-full flex flex-col gap-10 md:flex-row justify-between">
-                    <div className="flex flex-col items-center md:flex-row gap-10">
-                        <img src={assets.SMlogo2} alt="logo" />
-                        <div className="w-72 sm:w-84">
-                            <h2 className="text-xl font-semibold mb-2">SM Metal Works</h2>
-                            <p className="text-sm text-gray-900">
-                                Leading bathroom brass ware manufacturer providing high quality taps, showers,
-                                accessories and fittings to customer across the country.
-                            </p>
-                        </div>
+        // Negative margins cancel the horizontal padding in MainLayout so the footer runs edge to edge.
+        <footer className="-mx-4 mt-16 bg-brand-navy text-brand-mist sm:-mx-[1vw] md:-mx-[2vw] lg:-mx-[4vw]">
+            <div className="mx-auto max-w-[1320px] px-5 pt-14 md:px-8 xl:px-0">
+                <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.5fr_1fr_0.85fr] lg:gap-8">
+                    {/* Brand */}
+                    <div>
+                        <Link to="/" className="inline-block bg-white p-3">
+                            <img src={assets.SMlogo2} alt="SM Valves & Cocks" className="h-20 w-auto" />
+                        </Link>
+                        <p className="mt-4 max-w-[320px] text-[15px] leading-[1.65]">
+                            Dependable bathroom fittings for homes, hospitality and projects across India.
+                            Manufactured in Jalandhar, Punjab.
+                        </p>
                     </div>
-                    <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-                        <div>
-                            <h3 className="text-lg font-semibold mb-2">Products</h3>
-                            <ul className="text-sm text-gray-900 space-y-1">
-                                <li>
-                                    <Link to="/" className="hover:underline">Faucets</Link>
+
+                    {/* Explore */}
+                    <div>
+                        <h3 className="text-[13px] font-medium uppercase tracking-[0.14em] text-white">Explore</h3>
+                        <ul className="mt-6 space-y-2 text-[15px]">
+                            {exploreLinks.map(({ to, label }) => (
+                                <li key={to}>
+                                    <Link to={to} className={linkClass}>
+                                        {label}
+                                    </Link>
                                 </li>
-                                <li>
-                                    <Link to="/" className="hover:underline">Bath Essentials</Link>
-                                </li>
-                                <li>
-                                    <Link to="/" className="hover:underline">Bathroom Sets</Link>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-                            <p className="text-sm text-gray-900">O-6 Industrial Area, Sodal Road, Jalandhar</p>
-                            <p className="text-sm text-gray-900 mt-1">Phone: +91 98140-62802</p>
-                            <p className="text-sm text-gray-900">Email: manojsharma1825@gmail.com</p>
-                        </div>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Connect */}
+                    <div>
+                        <h3 className="text-[13px] font-medium uppercase tracking-[0.14em] text-white">Connect</h3>
+                        <ul className="mt-6 space-y-2 text-[15px]">
+                            <li>
+                                <a href="tel:+919814062802" className={linkClass}>
+                                    +91 98140-62802
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:manojsharma1825@gmail.com" className={`${linkClass} break-all`}>
+                                    manojsharma1825@gmail.com
+                                </a>
+                            </li>
+                            <li>O-6 Industrial Area, Sodal Road, Jalandhar</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div className="mt-6 border-t border-gray-400 pt-2 text-center text-sm text-gray-800">
-                &copy; {new Date().getFullYear()} SM Metal Works. All rights reserved.
+
+                {/* Bottom bar */}
+                <div className="mt-12 flex flex-col gap-2 border-t border-white/10 py-6 font-mono text-[11px] tracking-wide text-brand-muted sm:flex-row sm:items-center sm:justify-between">
+                    <p>&copy; {new Date().getFullYear()} SM Metal Works. Made in India.</p>
+                    <p>For architects, dealers &amp; homeowners</p>
+                </div>
             </div>
         </footer>
-    )
-}
+    );
+};
 
 export default Footer;

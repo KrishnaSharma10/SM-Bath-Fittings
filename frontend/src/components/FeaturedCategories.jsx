@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import TitleCard from "./cards/CategoryCard";
+import CategoryCard from "./cards/CategoryCard";
 import { getAllCategories } from "../api/CategoryApi";
 
 const FeaturedCategories = () => {
@@ -25,49 +24,53 @@ const FeaturedCategories = () => {
     }, []);
 
     return (
-        <section className="w-full max-w-[1400px] mx-auto px-4 mt-20">
-            <div className="text-center mb-10">
-                <span className="uppercase tracking-[0.3em] text-xs md:text-sm text-brass-600 font-semibold">
-                    Explore
-                </span>
-                <h2 className="barlow-condensed-medium text-3xl md:text-5xl text-charcoal-900 mt-2 brass-underline inline-block">
-                    Featured Categories
-                </h2>
-            </div>
+        // Negative margins cancel the horizontal padding in MainLayout so the section lines up with the navbar.
+        <section className="-mx-4 sm:-mx-[1vw] md:-mx-[2vw] lg:-mx-[4vw]">
+            <div className="mx-auto max-w-[1320px] px-4 py-16 md:px-8 md:py-24 xl:px-0">
+                {/* Header */}
+                <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+                    <div>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-brand-red sm:text-[12px]">
+                            Browse by use
+                        </p>
+                        <h2 className="mt-3 text-[40px] font-extrabold leading-[1.05] tracking-[-0.05em] text-brand-ink sm:text-[52px] lg:text-[64px]">
+                            Find the right range
+                        </h2>
+                    </div>
 
-            {loading && (
-                <div className="text-center py-10 text-charcoal-400 montserrat">
-                    Loading categories...
+                    <p className="max-w-[470px] text-[15px] leading-[1.65] text-slate-500 sm:text-[16px] lg:pb-2">
+                        Start with a category, then move through collections and product codes with confidence.
+                    </p>
                 </div>
-            )}
 
-            {error && (
-                <div className="text-center py-10 text-red-500 montserrat">
-                    {error}
-                </div>
-            )}
+                {/* States */}
+                {loading && (
+                    <div className="mt-12 grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
+                        {[0, 1, 2].map((i) => (
+                            <div
+                                key={i}
+                                className="h-[420px] animate-pulse rounded-[3px] border border-slate-200 bg-white"
+                            />
+                        ))}
+                    </div>
+                )}
 
-            {!loading && !error && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {categories.slice(0, 4).map((category) => (
-                        <TitleCard
-                            key={category._id}
-                            title={category.name}
-                            summary={category.description}
-                            image={category.titleImage}
-                            id={category._id}
-                        />
-                    ))}
-                </div>
-            )}
+                {error && <p className="mt-12 py-10 text-center text-[15px] text-brand-red">{error}</p>}
 
-            <div className="flex justify-center mt-10">
-                <Link
-                    to="/collection"
-                    className="inline-flex items-center gap-2 px-7 py-2.5 bg-gradient-to-r from-brass-500 to-brass-400 text-charcoal-900 text-sm font-semibold rounded-full hover:from-brass-400 hover:to-brass-300 shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-                >
-                    View All Collections
-                </Link>
+                {/* Cards: first one is wider, like the design */}
+                {!loading && !error && (
+                    <div className="mt-12 grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
+                        {categories.slice(0, 3).map((category) => (
+                            <CategoryCard
+                                key={category._id}
+                                id={category._id}
+                                title={category.name}
+                                summary={category.description}
+                                image={category.titleImage}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </section>
     );
