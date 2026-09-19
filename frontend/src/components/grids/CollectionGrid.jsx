@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import CollectionCard from "../cards/CollectionCard";
-import { assets } from "../../assets/assets";
 import { useParams } from "react-router-dom";
+import CollectionCard from "../cards/CollectionCard";
 import { getAllCollectionsbyCategory } from "../../api/CategoryApi";
 
-const CollectionGrid = () => {
+const CollectionGrid = ({ onLoad }) => {
     const { categoryId } = useParams();
     const [collections, setCollections] = useState([]);
     const [loading, setloading] = useState(true);
@@ -12,43 +11,55 @@ const CollectionGrid = () => {
 
     useEffect(() => {
         const fetchCollections = async () => {
+            setloading(true);
+            setError(null);
             try {
                 const data = await getAllCollectionsbyCategory(categoryId);
                 setCollections(data);
+                onLoad?.(data.length);
             } catch (err) {
                 console.error("Error fetching collections:", err);
                 setError("Failed to load collections.");
+                onLoad?.(null);
             } finally {
                 setloading(false);
             }
         };
         fetchCollections();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoryId]);
 
+    const gridClass = "grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3";
+
     if (loading) {
-        return <div className="text-center mt-10 text-xl">Loading collections...</div>;
+        return (
+            <div className={gridClass}>
+                {[0, 1, 2].map((i) => (
+                    <div key={i} className="h-[280px] animate-pulse rounded-[3px] border border-slate-200 bg-white" />
+                ))}
+            </div>
+        );
     }
 
     if (error) {
-        return <div className="text-center mt-10 text-red-500">{error}</div>;
+        return <p className="py-10 text-center text-[15px] text-brand-red">{error}</p>;
+    }
+
+    if (collections.length === 0) {
+        return <p className="py-10 text-center text-[15px] text-slate-500">No collections in this category yet.</p>;
     }
 
     return (
-        <div className="w-full py-6 px-2 flex justify-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-18 max-w-screen-xl w-full justify-items-center">
-                {collections.map((collection) => (
-                    <CollectionCard
-                        key={collection._id}
-                        categoryid={collection.category}
-                        name={collection.name}
-                        description={collection.description}
-                        image={collection.titleImage}
-                        id={collection._id}
-                    />
-                ))}
-
-
-            </div>
+        <div className={gridClass}>
+            {collections.map((collection) => (
+                <CollectionCard
+                    key={collection._id}
+                    name={collection.name}
+                    description={collection.description}
+                    image={collection.image}
+                    id={collection._id}
+                />
+            ))}
         </div>
     );
 };

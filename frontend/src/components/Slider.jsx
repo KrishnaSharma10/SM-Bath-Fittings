@@ -94,7 +94,7 @@ const Slider = () => {
                             px-5 py-[15px]
                             text-[15px] font-semibold text-brand-blue
                             transition-all duration-300 ease-out
-                            hover:-translate-y-1 hover:border-brand-blue hover:shadow-md
+                            hover:-translate-y-1 hover:border-brand-blue hover:bg-brand-sky hover:shadow-md
                             active:translate-y-0
                         "
                     >

@@ -6,6 +6,7 @@ import faucet1 from './faucet1.jpg'
 import bathessentials from './bathessentials.jpg'
 import bathset from './bathroomset.jpg'
 import SMlogo2 from './SM_logo.jpg'
+import SMlogo3 from './SM_logo.jpeg'
 import slider1 from './slider1.jpg'
 import slider2 from './slider2.jpg'
 import nixon from './nixon.png'
@@ -19,6 +20,7 @@ export const assets = {
     bathessentials,
     bathset,
     SMlogo2,
+    SMlogo3,
     slider1,
     slider2,
     nixon,

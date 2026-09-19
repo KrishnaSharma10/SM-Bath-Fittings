@@ -21,7 +21,7 @@ const ArrowIcon = ({ className = "" }) => (
 const CategoryCard = ({ id, title, summary, image, className = "" }) => {
     return (
         <Link
-            to={`/collection/category/${title}/${id}`}
+            to={`/explore/category/${title}/${id}`}
             className={`
                 group relative flex h-full flex-col overflow-hidden
                 rounded-[3px] border border-slate-200 border-t-[3px] border-t-brand-blue bg-white

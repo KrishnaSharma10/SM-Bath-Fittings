@@ -12,6 +12,7 @@ import AdminPanelPage from './pages/AdminPanel.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import MainLayout from './layouts/MainLayout.jsx'
 import AdminLayout from './layouts/AdminLayout.jsx'
+import FeaturedCollections from './components/FeaturedCollections.jsx'
 
 const App = () => {
   return (
@@ -34,7 +35,7 @@ const App = () => {
         }
       />
       <Route
-        path="/collection"
+        path="/explore"
         element={
           <MainLayout>
             <Collection />
@@ -50,15 +51,15 @@ const App = () => {
         }
       />
       <Route
-        path="/collection/category/:title/:categoryId"
+        path="/explore/category/:title/:categoryId"
         element={
           <MainLayout>
-            <CollectionGrid />
+            <FeaturedCollections  />
           </MainLayout>
         }
       />
       <Route
-        path="/collection/category/collections/:title/:collectionId"
+        path="/explore/category/collections/:title/:collectionId"
         element={
           <MainLayout>
             <CategoryGrid />
