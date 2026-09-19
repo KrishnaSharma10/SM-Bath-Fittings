@@ -10,6 +10,11 @@ export const getAllCollectionsbyCategory = async (categoryId) => {
     return res.data;
 }
 
+export const getAllProductsbyCollectionId = async (collectionId) => {
+    const res = await api.get(`${import.meta.env.VITE_GETPRODUCTS_ENDPOINT}${collectionId}/products`);
+    return res.data;
+}
+
 export const createCollection = async (e) => {
     e.preventDefault();
 

@@ -2,14 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import CollectionGrid from "./grids/CollectionGrid";
 
-/**
- * Page section: eyebrow, title, description and the grid.
- * Put this on the collections page instead of <CollectionGrid />.
- */
 const FeaturedCollections = () => {
     const params = useParams();
-    // The category name comes from your route, e.g. /collection/category/:categoryName/:categoryId.
-    // If your route uses a different param name, change it here.
     const categoryName = params.categoryName || params.name || params.title || "Collections";
 
     // Filled in by CollectionGrid once the data has loaded (null while loading or on error)

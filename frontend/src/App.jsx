@@ -13,6 +13,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 import MainLayout from './layouts/MainLayout.jsx'
 import AdminLayout from './layouts/AdminLayout.jsx'
 import FeaturedCollections from './components/FeaturedCollections.jsx'
+import FeaturedProducts from './components/FeaturedProducts.jsx'
 
 const App = () => {
   return (
@@ -62,7 +63,7 @@ const App = () => {
         path="/explore/category/collections/:title/:collectionId"
         element={
           <MainLayout>
-            <CategoryGrid />
+            <FeaturedProducts />
           </MainLayout>
         }
       />

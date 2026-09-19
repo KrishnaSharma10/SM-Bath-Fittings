@@ -7,6 +7,11 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    catNo: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     image: {
       type: String,
       required: true,
@@ -20,6 +25,9 @@ const productSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    price:{
+      type: Number,
+    }
   },
   { timestamps: true }
 );

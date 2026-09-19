@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TitleCard from "../cards/CategoryCard";
-import { getAllCategories } from "../../api/CategoryApi";
+import { getAllCategories } from "../../api/ExploreApi";
 
 const CategoryGrid = () => {
     const [categories, setCategories] = useState([]);

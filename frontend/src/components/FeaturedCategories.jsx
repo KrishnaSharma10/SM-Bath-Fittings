@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CategoryCard from "./cards/CategoryCard";
-import { getAllCategories } from "../api/CategoryApi";
+import { getAllCategories } from "../api/ExploreApi";
 
 const FeaturedCategories = () => {
     const [categories, setCategories] = useState([]);

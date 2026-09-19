@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CollectionCard from "../cards/CollectionCard";
-import { getAllCollectionsbyCategory } from "../../api/CategoryApi";
+import { getAllCollectionsbyCategory } from "../../api/ExploreApi";
 
 const CollectionGrid = ({ onLoad }) => {
     const { categoryId } = useParams();
