@@ -4,16 +4,14 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Collection from './pages/Collection'
 import Contact from './pages/Contact'
-import CollectionGrid from './components/grids/CollectionGrid.jsx'
 import NotFound from './pages/NotFound.jsx'
-import CategoryGrid from './components/grids/CategoryGrid.jsx'
 import Login from './pages/Login.jsx'
-import AdminPanelPage from './pages/AdminPanel.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import MainLayout from './layouts/MainLayout.jsx'
 import AdminLayout from './layouts/AdminLayout.jsx'
 import FeaturedCollections from './components/FeaturedCollections.jsx'
 import FeaturedProducts from './components/FeaturedProducts.jsx'
+import AdminHome from './pages/admin/AdminHome.jsx' 
 
 const App = () => {
   return (
@@ -81,12 +79,12 @@ const App = () => {
         path="/admin"
         element={
           <ProtectedRoute>
-            <AdminLayout>
-              <AdminPanelPage />
-            </AdminLayout>
+            <AdminLayout />
           </ProtectedRoute>
         }
-      />
+      >
+        <Route index element={<AdminHome />} />
+      </Route>
 
       {/* 404 Page */}
       <Route

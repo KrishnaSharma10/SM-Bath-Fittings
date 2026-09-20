@@ -68,7 +68,7 @@ const Slider = () => {
 
                 <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3.5">
                     <Link
-                        to="/collection"
+                        to="/explore"
                         className="
                             inline-flex items-center justify-center gap-3
                             rounded-[3px] bg-brand-blue

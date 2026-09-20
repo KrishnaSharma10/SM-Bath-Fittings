@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const exploreLinks = [
     { to: "/", label: "Home" },
-    { to: "/collection", label: "Collection" },
+    { to: "/explore", label: "Collection" },
     { to: "/about", label: "About" },
     { to: "/contactus", label: "Contact" },
 ];
