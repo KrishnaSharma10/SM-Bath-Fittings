@@ -14,6 +14,9 @@ import FeaturedProducts from './components/FeaturedProducts.jsx'
 import AdminHome from './pages/admin/AdminHome.jsx' 
 import CollectionForm from './pages/admin/CollectionForm.jsx'
 import CollectionsManage from './pages/admin/CollectionsManage.jsx'
+import ProductForm from './pages/admin/ProductForm.jsx'
+import ProductsManage from './pages/admin/ProductsManage.jsx'
+
 
 const App = () => {
   return (
@@ -88,6 +91,8 @@ const App = () => {
         <Route index element={<AdminHome />} />
         <Route path="collections/new" element={<CollectionForm />} />
         <Route path="collections" element={<CollectionsManage />} />
+        <Route path="products/new" element={<ProductForm />} />
+        <Route path="products" element={<ProductsManage />} />
       </Route>
 
       {/* 404 Page */}
