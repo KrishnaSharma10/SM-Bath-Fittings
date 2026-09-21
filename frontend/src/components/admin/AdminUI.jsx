@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 
 /* Shared building blocks for the admin pages */
@@ -116,3 +117,89 @@ export const ChevronDown = () => (
         <path d="m6 9 6 6 6-6" />
     </svg>
 );
+
+/**
+ * "Are you sure?" box for deleting things. Cancel is focused first, Esc and the backdrop cancel.
+ * Pass the explanation as children.
+ */
+export const ConfirmDialog = ({
+    open,
+    title,
+    children,
+    confirmLabel = "Yes, delete",
+    busyLabel = "Deleting...",
+    busy = false,
+    error = "",
+    onConfirm,
+    onCancel,
+}) => {
+    const cancelRef = useRef(null);
+
+    // Lock page scroll while open, focus Cancel, and return focus to the button that opened it
+    useEffect(() => {
+        if (!open) return;
+        const trigger = document.activeElement;
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        cancelRef.current?.focus();
+        return () => {
+            document.body.style.overflow = previousOverflow;
+            trigger?.focus?.();
+        };
+    }, [open]);
+
+    useEffect(() => {
+        if (!open) return;
+        const onKey = (e) => {
+            if (e.key === "Escape" && !busy) onCancel();
+        };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [open, busy, onCancel]);
+
+    if (!open) return null;
+
+    return createPortal(
+        <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-navy/70 p-4"
+            onClick={() => !busy && onCancel()}
+        >
+            <div
+                role="alertdialog"
+                aria-modal="true"
+                aria-labelledby="confirm-title"
+                aria-describedby="confirm-text"
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-[460px] border border-slate-200 border-t-[3px] border-t-brand-red bg-white p-7 shadow-2xl"
+            >
+                <h2 id="confirm-title" className="text-[24px] font-extrabold leading-tight tracking-[-0.03em] text-brand-ink">
+                    {title}
+                </h2>
+                <div id="confirm-text" className="mt-3 text-[15px] leading-[1.6] text-slate-600">
+                    {children}
+                </div>
+
+                {error && (
+                    <div className="mt-4">
+                        <Notice type="error">{error}</Notice>
+                    </div>
+                )}
+
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                    <button
+                        type="button"
+                        onClick={onConfirm}
+                        disabled={busy}
+                        className="rounded-[3px] bg-brand-red px-5 py-3.5 text-[14px] font-semibold text-white transition-[filter] duration-200 hover:brightness-90 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                        {busy ? busyLabel : confirmLabel}
+                    </button>
+                    <button ref={cancelRef} type="button" onClick={onCancel} disabled={busy} className={secondaryButtonClass}>
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>,
+        document.body
+    );
+};

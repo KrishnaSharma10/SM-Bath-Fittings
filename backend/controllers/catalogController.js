@@ -39,7 +39,7 @@ const handleError = (res, err, fallback) => {
 };
 
 /* ------------------------------------------------------------------ */
-/* Public reads                                            */
+/* Public reads (existing)                                             */
 /* ------------------------------------------------------------------ */
 
 const getAllCategories = async (req, res) => {
@@ -76,7 +76,7 @@ const getProductsbyCollectionId = async (req, res) => {
 };
 
 /* ------------------------------------------------------------------ */
-/* Reads used by the admin edit screens                               */
+/* Reads used by the admin edit screens                                */
 /* ------------------------------------------------------------------ */
 
 // GET /collections?category=<id>&q=<text>
@@ -93,8 +93,19 @@ const getAllCollections = async (req, res) => {
             filter.name = { $regex: escapeRegex(q.trim()), $options: "i" };
         }
 
-        const collections = await Collection.find(filter).populate("categoryRef").sort({ name: 1 });
-        res.status(200).json(collections);
+        const collections = await Collection.find(filter).populate("categoryRef").sort({ name: 1 }).lean();
+
+        // How many products each collection holds, counted for all of them in one query
+        const counts = new Map();
+        if (collections.length > 0) {
+            const rows = await Product.aggregate([
+                { $match: { collectionRef: { $in: collections.map((c) => c._id) } } },
+                { $group: { _id: "$collectionRef", count: { $sum: 1 } } },
+            ]);
+            rows.forEach((r) => counts.set(String(r._id), r.count));
+        }
+
+        res.status(200).json(collections.map((c) => ({ ...c, productCount: counts.get(String(c._id)) || 0 })));
     } catch (err) {
         handleError(res, err, "Server error while fetching collections");
     }
@@ -370,13 +381,11 @@ module.exports = {
     getAllCategories,
     getAllCollectionsbyCategory,
     getProductsbyCollectionId,
-
     // admin edit screens
     getAllCollections,
     getCollectionById,
     getAllProducts,
     getProductById,
-    
     // admin writes
     createCollection,
     updateCollection,

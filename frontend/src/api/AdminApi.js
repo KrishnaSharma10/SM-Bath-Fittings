@@ -15,9 +15,19 @@ export const verifySession = async () => {
 };
 
 /* ---------- Categories (for the dropdowns) ---------- */
-export const getCategories = async () => {
-    const res = await api.get(`${CATALOG}/categories`);
-    return res.data;
+// Categories almost never change, so ask the server once and share the answer between pages
+let categoriesRequest = null;
+export const getCategories = () => {
+    if (!categoriesRequest) {
+        categoriesRequest = api
+            .get(`${CATALOG}/categories`)
+            .then((res) => res.data)
+            .catch((err) => {
+                categoriesRequest = null; // let the next call try again
+                throw err;
+            });
+    }
+    return categoriesRequest;
 };
 
 /* ---------- Collections ---------- */
