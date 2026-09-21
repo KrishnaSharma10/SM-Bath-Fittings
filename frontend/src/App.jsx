@@ -16,10 +16,13 @@ import CollectionForm from './pages/admin/CollectionForm.jsx'
 import CollectionsManage from './pages/admin/CollectionsManage.jsx'
 import ProductForm from './pages/admin/ProductForm.jsx'
 import ProductsManage from './pages/admin/ProductsManage.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 
 const App = () => {
   return (
+    <>
+    <ScrollToTop/>
     <Routes>
       {/* Public routes with MainLayout */}
       <Route
@@ -105,6 +108,7 @@ const App = () => {
         }
       />
     </Routes>
+    </>
   )
 }
 
