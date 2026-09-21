@@ -1,7 +1,5 @@
 import api from "./api";
 
-// Backend paths. If your VITE_API_BASE_URL already ends with /api or /api/catalog,
-// shorten these two constants so the final URLs still come out right.
 const AUTH = "/api/auth";
 const CATALOG = "/api/catalog";
 
@@ -76,6 +74,15 @@ export const updateProduct = async (id, data) => {
 export const deleteProduct = async (id) => {
     const res = await api.delete(`${CATALOG}/products/${id}`);
     return res.data;
+};
+
+/* ---------- Image upload (goes to Cloudinary through the backend) ---------- */
+export const uploadImage = async (file) => {
+    const form = new FormData();
+    form.append("image", file);
+    // Do not set Content-Type by hand: the browser adds it, with the boundary the server needs
+    const res = await api.post(`${CATALOG}/upload`, form);
+    return res.data.url; // the https link to store on the collection or product
 };
 
 /* ---------- Turn any error into a sentence the admin can read ---------- */

@@ -101,7 +101,7 @@ const Login = () => {
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword((v) => !v)}
-                                    className="absolute right-3 top-1/2 mt-[3px] -translate-y-1/2 text-[12px] font-semibold text-brand-blue hover:text-brand-red"
+                                    className="absolute right-3 top-1/2 mt-[3px] -translate-y-1/2 text-[12px] font-semibold text-brand-blue hover:text-brand-red cursor-pointer"
                                 >
                                     {showPassword ? "Hide" : "Show"}
                                 </button>
@@ -111,7 +111,7 @@ const Login = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full rounded-[3px] bg-brand-blue px-5 py-3.5 text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60"
+                            className="w-full rounded-[3px] bg-brand-blue px-5 py-3.5 text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-brand-dark hover:text-brand-red cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
                         >
                             {loading ? "Signing in..." : "Sign in"}
                         </button>

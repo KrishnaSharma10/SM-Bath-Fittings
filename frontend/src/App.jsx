@@ -12,6 +12,7 @@ import AdminLayout from './layouts/AdminLayout.jsx'
 import FeaturedCollections from './components/FeaturedCollections.jsx'
 import FeaturedProducts from './components/FeaturedProducts.jsx'
 import AdminHome from './pages/admin/AdminHome.jsx' 
+import CollectionForm from './pages/admin/CollectionForm.jsx'
 
 const App = () => {
   return (
@@ -84,6 +85,8 @@ const App = () => {
         }
       >
         <Route index element={<AdminHome />} />
+        <Route path="collections/new" element={<CollectionForm />} />
+        <Route path="collections/:collectionId/edit" element={<CollectionForm />} />
       </Route>
 
       {/* 404 Page */}

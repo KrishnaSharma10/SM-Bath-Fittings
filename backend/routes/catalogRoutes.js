@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
+const uploadSingleImage = require('../middleware/uploadMiddleware');
+const { uploadImage } = require('../controllers/uploadController');
 const {
   getAllCategories,
   getAllCollectionsbyCategory,
@@ -29,6 +31,9 @@ router.get('/products', getAllProducts);                // ?collection=&category
 router.get('/products/:productId', getProductById);
 
 /* ---------- Admin only (needs a valid login token) ---------- */
+// Login is checked first, so only the admin can upload. Returns { url }.
+router.post('/upload', authMiddleware, uploadSingleImage, uploadImage);
+
 router.post('/collections', authMiddleware, createCollection);
 router.put('/collections/:collectionId', authMiddleware, updateCollection);
 router.delete('/collections/:collectionId', authMiddleware, deleteCollection);
